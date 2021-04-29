@@ -3,9 +3,10 @@ import React from "react";
 
 const useStyles = makeStyles({
     icon: {
-        height: 50,
-        width: 50,
+        height: 70,
+        width: 70,
         borderRadius: "50%",
+        marginTop: "-30px",
     },
     img: {
         width: "100%",

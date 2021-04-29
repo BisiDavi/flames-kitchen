@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import {
     makeStyles,
     BottomNavigation,
@@ -27,31 +28,59 @@ const footerIcons = [
     {
         icon: <NotificationsActiveIcon />,
         label: "Subscribe",
-        value: "subscribe",
+        value: 0,
+        link: "/subscribe",
     },
     {
         icon: <LogoIcon />,
         label: "Home",
-        value: "home",
+        value: 1,
+        link: "/",
     },
     {
         icon: <AccountCircleIcon />,
         label: "Profile",
-        value: "profile",
+        value: 2,
+        link: "/profile",
     },
 ];
 
 const Footer = () => {
     const classes = useStyles();
-    const [value, setValue] = React.useState("home");
+    const [value, setValue] = useState(1);
+    const router = useRouter();
 
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    useEffect(() => {
+        console.log("value", value);
+        loadPage();
+        return () => {
+            loadPage();
+        };
+    }, [value]);
+    const loadPage = () => {
+        switch (value) {
+            case 0:
+                console.log("subscribe");
+                return router.push("/subscribe");
+            case 1:
+                console.log("home");
+                return router.push("/");
+            case 2:
+                console.log("profile");
+                return router.push("/profile");
+            default:
+                return null;
+        }
+    };
+
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
 
     return (
         <footer className={classes.footer}>
             <BottomNavigation
+                defaultValue="home"
                 value={value}
                 onChange={handleChange}
                 className={classes.root}

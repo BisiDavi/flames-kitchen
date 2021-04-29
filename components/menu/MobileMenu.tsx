@@ -42,7 +42,7 @@ const MobileMenu = ({ closeMenu }) => {
                         z-index: 100;
                         background: white;
                         width: 100%;
-                        height: 88vh;
+                        height: 80vh;
                         top: 12vh;
                         display: flex;
                         justify-content: center;

@@ -51,22 +51,19 @@ const Footer = () => {
     const router = useRouter();
 
     useEffect(() => {
-        console.log("value", value);
         loadPage();
         return () => {
             loadPage();
         };
     }, [value]);
+
     const loadPage = () => {
         switch (value) {
             case 0:
-                console.log("subscribe");
                 return router.push("/subscribe");
             case 1:
-                console.log("home");
                 return router.push("/");
             case 2:
-                console.log("profile");
                 return router.push("/profile");
             default:
                 return null;

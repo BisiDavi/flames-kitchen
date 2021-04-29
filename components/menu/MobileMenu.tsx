@@ -1,9 +1,8 @@
 import React from "react";
-import Link from "next/link";
-import { Hamburger } from "../Button";
-import { Logo } from "../../icons";
+import { useRouter } from "next/router";
 
-const MobileMenu = ({ closeMenu, menuClassName }) => {
+const MobileMenu = ({ closeMenu }) => {
+    const router = useRouter();
     const menuLinks = [
         { name: "Home", link: "/", type: "main" },
         { name: "About us", link: "/about-us", type: "main" },
@@ -11,23 +10,27 @@ const MobileMenu = ({ closeMenu, menuClassName }) => {
         { name: "Log in", link: "/login", type: "secondary" },
         { name: "Start Free Trial", link: "/free-trial", type: "secondary" },
     ];
+    const loadPage = (link) => {
+        closeMenu();
+        router.push(link);
+    };
     return (
         <nav>
             <ul className="menulist">
                 {menuLinks.map((menuLink, index) => {
                     return menuLink.type === "main" ? (
                         <li key={index}>
-                            <Link href={menuLink.link}>
-                                <a>{menuLink.name}</a>
-                            </Link>
+                            <a onClick={() => loadPage(menuLink.link)}>
+                                {menuLink.name}
+                            </a>
                         </li>
                     ) : menuLink.type === "divider" ? (
                         <div key={index} className="divider"></div>
                     ) : (
                         <li key={index}>
-                            <Link href={menuLink.link}>
-                                <a>{menuLink.name}</a>
-                            </Link>
+                            <a onClick={() => loadPage(menuLink.link)}>
+                                {menuLink.name}
+                            </a>
                         </li>
                     );
                 })}

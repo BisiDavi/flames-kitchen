@@ -19,12 +19,7 @@ const Header = () => {
                     className={sidebarState(btnState)}
                 />
             </header>
-            {btnState && (
-                <MobileMenu
-                    closeMenu={hamburgerHandler}
-                    menuClassName={sidebarState(btnState)}
-                />
-            )}
+            {btnState && <MobileMenu closeMenu={hamburgerHandler} />}
             <style jsx>
                 {`
                     header {

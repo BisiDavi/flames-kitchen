@@ -26,7 +26,9 @@ function MyApp({ Component, pageProps }) {
             setLoading(true);
         };
         const end = () => {
-            setLoading(false);
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         };
         Router.events.on("routeChangeStart", start);
         Router.events.on("routeChangeComplete", end);

@@ -7,7 +7,7 @@ const MobileMenu = ({ closeMenu }) => {
         { name: "Home", link: "/", type: "main" },
         { name: "About us", link: "/about-us", type: "main" },
         { type: "divider" },
-        { name: "Log in", link: "/login", type: "secondary" },
+        { name: "Log in", link: "/auth/login", type: "secondary" },
         { name: "Start Free Trial", link: "/free-trial", type: "secondary" },
     ];
     const loadPage = (link) => {

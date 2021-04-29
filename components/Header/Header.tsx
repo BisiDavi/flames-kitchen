@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Logo } from "../../icons";
 import { Hamburger } from "../Button";
+import MobileMenu from "../menu/MobileMenu";
 
 const Header = () => {
     const [btnState, setBtnstate] = useState(false);
@@ -18,6 +19,12 @@ const Header = () => {
                     className={sidebarState(btnState)}
                 />
             </header>
+            {btnState && (
+                <MobileMenu
+                    closeMenu={hamburgerHandler}
+                    menuClassName={sidebarState(btnState)}
+                />
+            )}
             <style jsx>
                 {`
                     header {

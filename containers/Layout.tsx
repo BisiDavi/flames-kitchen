@@ -8,11 +8,11 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children, title }): JSX.Element => {
     return (
-    <>
+        <div className="layout">
             <Header />
             <main>{children}</main>
             <Footer />
-        </>
+        </div>
     );
 };
 
